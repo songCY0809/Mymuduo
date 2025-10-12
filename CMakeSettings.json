@@ -1,0 +1,20 @@
+{
+  "configurations": [
+    {
+      "name": "WSL-GCC-Debug",
+      "generator": "Unix Makefiles",
+      "configurationType": "Debug",
+      "cmakeExecutable": "/usr/bin/cmake",
+      "inheritEnvironments": [ "linux_x64" ],
+      "remoteMachineName": "localhost",
+      "remoteCMakeListsRoot": "/home/songluan/projects/mymuduo",
+      "remoteBuildRoot": "/home/songluan/projects/mymuduo/out/build/${name}",
+      "remoteInstallRoot": "/home/songluan/projects/mymuduo/out/install/${name}",
+      "remoteCopySources": true,
+      "remoteCopySourcesMethod": "rsync",
+      "remoteCopySourcesExclusionList": [ ".vs", ".git", "out", "build" ],
+      "remoteCopyBuildOutput": false,
+      "rsyncCommandArgs": "-t --delete --delete-excluded"
+    }
+  ]
+}
