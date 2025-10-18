@@ -26,7 +26,7 @@ public:
 	void setReadCallback(ReadEventCallback cb) { readCallback_ = std::move(cb); }
 	void setWriteCallback(EventCallback cb) { writeCallback_ = std::move(cb); }
 	void setCloseCallback(EventCallback cb) { closeCallback_ = std::move(cb); }
-	void setErrorCallback(EventCallback cb) { errorCallbakc_ = std::move(cb); }
+	void setErrorCallback(EventCallback cb) { errorCallback_ = std::move(cb); }
 
 	// tie_用于解决channel和tcpconnection生命周期问题，
 	// 防止在tie_.lock()前其对象就被销毁了，导致错误调用
@@ -41,9 +41,9 @@ public:
 
 	//设置fd相应状态
 	void enableReading() { events_ |= kReadEvent; update(); }
-	void disableReading() { events_ |= ~kReadEvent; update(); }
-	void enableWriting() { evens_ |= kWriteEvent; update(); }
-	void disableWriting() { events_ |= ~kWriteEvent; update(); }
+	void disableReading() { events_ &= ~kReadEvent; update(); }
+	void enableWriting() { events_ |= kWriteEvent; update(); }
+	void disableWriting() { events_ &= ~kWriteEvent; update(); }
 	void disableAll() { events_ |= kNoneEvent; update(); }
 
 	//返回fd当前状态

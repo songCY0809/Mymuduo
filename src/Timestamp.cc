@@ -2,8 +2,7 @@
 
 #include "Timestamp.h"
 
-Timestamp::Timestamp()
-	: microSecondsSinceEpoch_(0)
+Timestamp::Timestamp() : microSecondsSinceEpoch_(0)
 {
 }
 
