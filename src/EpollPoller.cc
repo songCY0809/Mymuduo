@@ -5,6 +5,7 @@
 #include "EpollPoller.h"
 #include "Logger.h"
 #include "Channel.h"
+#include "EventLoop.h"
 
 const int kNew = -1;	//某个channel还未添加至Poller（channel成员index_初始化为-1）
 const int kAdded = 1;	//某个channel已经添加至Poller

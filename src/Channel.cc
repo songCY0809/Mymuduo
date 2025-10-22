@@ -67,7 +67,7 @@ void Channel::handleEventWithGuard(Timestamp receiveTime)
 	{
 		if (readCallback_)
 		{
-			readCallback_();
+			readCallback_(receiveTime);
 		}
 	}
 	//写
