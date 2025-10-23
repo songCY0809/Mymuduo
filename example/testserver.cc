@@ -8,10 +8,10 @@ bool isLittleEndian() {
 
 int main() {
     if (isLittleEndian()) {
-        std::cout << "系统使用小端字节序!" << std::endl;
+        std::cout << "系统使用小端字节序..." << std::endl;
     }
     else {
-        std::cout << "系统使用大端字节序!" << std::endl;
+        std::cout << "系统使用大端字节序..." << std::endl;
     }
     return 0;
 }
