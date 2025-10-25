@@ -14,7 +14,7 @@ class EventLoopThread :noncopyable
 {
 public:
 	using ThreadInitCallback = std::function<void(EventLoop*)>;
-	EventLoopThread(const ThreadInitCallbak& cb = ThreadInitCallback(),
+	EventLoopThread(const ThreadInitCallback& cb = ThreadInitCallback(),
 					const std::string& name = std::string());
 	~EventLoopThread();
 

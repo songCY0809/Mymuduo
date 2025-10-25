@@ -1,7 +1,7 @@
 #include "EventLoopThread.h"
 #include "EventLoop.h"
 
-EventLoopThread::EventLoopThread(const ThreadInitCallbak& cb, const std::string& name)
+EventLoopThread::EventLoopThread(const ThreadInitCallback& cb, const std::string& name)
 	: loop_(nullptr)
 	, exiting_(false)
 	, thread_(std::bind(&EventLoopThread::threadFunc, this), name)
@@ -13,8 +13,8 @@ EventLoopThread::EventLoopThread(const ThreadInitCallbak& cb, const std::string&
 
 EventLoopThread::~EventLoopThread()
 {
-	exiting = true;
-	if (lopp_ != nullptr)
+	exiting_ = true;
+	if (loop_ != nullptr)
 	{
 		loop_->quit();
 		thread_.join();

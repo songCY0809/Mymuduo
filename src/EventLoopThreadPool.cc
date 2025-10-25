@@ -47,10 +47,10 @@ EventLoop* EventLoopThreadPool::getNextLoop()
 	if (!loops_.empty())
 	{
 		loop = loops_[next_];
-		++next;
+		++next_;
 		if (next_ >= loops_.size())
 		{
-			next = 0;
+			next_ = 0;
 		}
 	}
 	return loop;

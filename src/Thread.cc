@@ -1,4 +1,4 @@
-#include <semaphore>
+#include <semaphore.h>
 
 #include "Thread.h"
 #include "CurrentThread.h"
@@ -10,7 +10,7 @@ Thread::Thread(ThreadFunc func, const std::string& name)
 	, joined_(false)
 	, tid_(0)
 	, func_(std::move(func))
-	, naem_(name)
+	, name_(name)
 {
 	setDefaultName();
 }
