@@ -9,7 +9,7 @@
 
 static int createNonblocking()
 {
-	int sockfd = ::Socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, IPPROTO_TCP);
+	int sockfd = ::socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, IPPROTO_TCP);
 	if (sockfd < 0)
 	{
 		LOG_FATAL("%s:$s:%d listen socket create err:%d\n", __FILE__, __FUNCTION__, __LINE__, errno);
@@ -35,7 +35,7 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reusepor
 Acceptor::~Acceptor()
 {
 	acceptChannel_.disableAll();	//把从Poller中感兴趣的事件删除掉
-	acceptChannel_.remove（）；		//调用EventLoop->removeChannel => Poller->removeChannel 
+	acceptChannel_.remove();		//调用EventLoop->removeChannel => Poller->removeChannel 
 									//把Poller的ChannelMap对应的部分删除
 }
 
@@ -58,7 +58,7 @@ void Acceptor::handleRead()
 		}
 		else
 		{
-			::fclose(connfd);
+			::close(connfd);
 		}
 	}
 	else
