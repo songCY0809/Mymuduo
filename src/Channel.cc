@@ -61,23 +61,7 @@ void Channel::handleEvent(Timestamp receiveTime)
 void Channel::handleEventWithGuard(Timestamp receiveTime)
 {
 	LOG_INFO("channel handleEvent revents:%d\n", revents_);
-	
-	//读
-	if (revents_ & (EPOLLIN | EPOLLPRI))
-	{
-		if (readCallback_)
-		{
-			readCallback_(receiveTime);
-		}
-	}
-	//写
-	if (revents_ & EPOLLOUT)
-	{
-		if (writeCallback_)
-		{
-			writeCallback_();
-		}
-	}
+
 	//关闭
 	if ((revents_ & EPOLLHUP) && !(revents_ & EPOLLIN))
 	{
@@ -92,6 +76,22 @@ void Channel::handleEventWithGuard(Timestamp receiveTime)
 		if (errorCallback_)
 		{
 			errorCallback_();
+		}
+	}
+	//读
+	if (revents_ & (EPOLLIN | EPOLLPRI))
+	{
+		if (readCallback_)
+		{
+			readCallback_(receiveTime);
+		}
+	}
+	//写
+	if (revents_ & EPOLLOUT)
+	{
+		if (writeCallback_)
+		{
+			writeCallback_();
 		}
 	}
 }

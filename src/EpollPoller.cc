@@ -125,7 +125,9 @@ void EpollPoller::update(int operation, Channel* channel)
 	epoll_event event;
 	::memset(&event, 0, sizeof(event));
 
-	int fd = channel->events();
+	int fd = channel->fd();
+
+	event.events = channel->events();
 	event.data.fd = fd;
 	event.data.ptr = channel;
 
